@@ -6,6 +6,7 @@ const ora = require('ora');
 const meow = require('meow');
 const FormData = require('form-data');
 const die = require('./core/die');
+const err = require('./core/errors');
 
 const { domain, apiKey } = require('./config');
 
@@ -60,13 +61,7 @@ process.on('SIGINT', () => {
         console.log(`${response.body}`);
       }
     } catch (error) {
-      if (error.statusCode === 400)
-        spinner.fail('Bad request, often due to missing parameter.');
-      else if (error.statusCode === 401)
-        spinner.fail('No valid API key provided');
-      else if (error.statusCode === 404)
-        spinner.fail("The requested resource doesn't exists");
-      else spinner.fail('Unknown error', error.message);
+        err(error, spinner)      
     }
   } else {
     die('Specify a file to upload...');
