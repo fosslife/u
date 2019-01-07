@@ -3,27 +3,9 @@
 const meow = require('meow');
 const die = require('./core/die');
 const upload = require('./core/upload');
+const helpmsg = require('./core/help');
 
-const cli = meow(
-  `
-	Usage
-    $ up <file> …
-
-  Examples
-	  $ up strangers.mp3
-	  $ up sigrid.png
-`,
-  {
-    flags: {
-      help: {
-        alias: 'h',
-      },
-      version: {
-        alias: 'v',
-      },
-    },
-  }
-);
+const cli = meow(helpmsg('message'), helpmsg('config'));
 
 const file = cli.input[0];
 
