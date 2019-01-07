@@ -5,6 +5,7 @@ const got = require('got');
 const ora = require('ora');
 const meow = require('meow');
 const FormData = require('form-data');
+const die = require('./core/die');
 
 const { domain, apiKey } = require('./config');
 
@@ -32,8 +33,7 @@ const cli = meow(
 const file = cli.input[0];
 
 process.on('SIGINT', () => {
-  console.log('\n\nOperation aborted!');
-  process.exit(1);
+  die('\n\nOperation aborted!');
 });
 
 (async () => {
@@ -69,7 +69,6 @@ process.on('SIGINT', () => {
       else spinner.fail('Unknown error', error.message);
     }
   } else {
-    console.error('Specify a file to upload...');
-    process.exit(1);
+    die('Specify a file to upload...');
   }
 })();
