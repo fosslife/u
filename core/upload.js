@@ -2,6 +2,7 @@
 
 const FormData = require('form-data');
 const { createReadStream } = require('fs');
+const { copy } = require("copy-paste");
 const ora = require('ora');
 const err = require('./errors');
 const request = require('./got');
@@ -35,6 +36,7 @@ const upload = async file => {
         if (response.statusCode === 200) {
             spinner.stop();
             console.log(`${response.body}`);
+            copy(response.body);
         }
     } catch (error) {
         err(error, spinner)
