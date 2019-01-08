@@ -9,10 +9,16 @@ const cli = meow(helpmsg('message'), helpmsg('config'));
 
 const file = cli.input[0];
 
+/**
+ * Handle graceful termination
+ */
 process.on('SIGINT', () => {
   die('\n\nOperation aborted!');
 });
 
+/**
+ * Uplaod file if given
+ */
 if (file) {
   upload(file);
 } else {

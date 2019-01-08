@@ -8,6 +8,11 @@ const request = require('./got');
 const { domain } = require('../config');
 const die = require('./die');
 
+/**
+ * Take the filename and process 
+ * it further for uploading
+ * @param {string} file filename
+ */
 const upload = async file => {
 
     const form = new FormData();

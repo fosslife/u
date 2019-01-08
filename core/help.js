@@ -1,3 +1,9 @@
+'use strict';
+
+/**
+ * prepare help menu message
+ * @param {object} type 
+ */
 const helpmsg = type => {
     if (type === 'message') {
         return (
