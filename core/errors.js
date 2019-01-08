@@ -1,11 +1,20 @@
+'use strict';
+
+const errorCode = error => {
+    switch (error) {
+        case 400:
+            return `Bad request, often due to missing parameter.`;
+        case 401:
+            return `No valid API key provided`;
+        case 404:
+            return `The requested resource doesn't exists`;
+        default:
+            return `Unknown error`;
+    }
+}
+
 const errorHandler = (error, spinner) => {
-    if (error.statusCode === 400)
-        spinner.fail('Bad request, often due to missing parameter.');
-    else if (error.statusCode === 401)
-        spinner.fail('No valid API key provided');
-    else if (error.statusCode === 404)
-        spinner.fail("The requested resource doesn't exists");
-    else spinner.fail('Unknown error', error.message);
+    spinner.fail(errorCode(error.statusCode))
 }
 
 module.exports = errorHandler;
