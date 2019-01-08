@@ -1,7 +1,5 @@
 const die = (msg) => {
-    console.error(
-        msg
-    );
+    msg && console.error(msg);
     process.exit(1);
 }
 
