@@ -6,11 +6,22 @@ const ora = require('ora');
 const err = require('./errors');
 const request = require('./got');
 const { domain } = require('../config');
+const die = require('./die');
 
 const upload = async file => {
 
     const form = new FormData();
-    form.append('file', createReadStream(file));
+    const fileStream = createReadStream(file);
+    fileStream.on('error', (err) => {
+        if (err.code === 'ENOENT') {
+            spinner.fail('Cannot find the specified file')
+            die();
+        } else {
+            spinner.fail('Unknown Error')
+            die();
+        }
+    })
+    form.append('file', fileStream);
 
     const spinner = ora(`Uploading…`).start();
 
