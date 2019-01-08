@@ -1,3 +1,5 @@
+'use strict';
+
 const domain = process.env.SPRK_SERVER_URL;
 const apiKey = process.env.SPRK_API_KEY;
 const die = require('./core/die');
