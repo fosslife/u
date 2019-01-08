@@ -13,10 +13,8 @@ process.on('SIGINT', () => {
   die('\n\nOperation aborted!');
 });
 
-(async () => {
-  if (file) {
-    upload(file);
-  } else {
-    die('Specify a file to upload...');
-  }
-})();
+if (file) {
+  upload(file);
+} else {
+  die('Specify a file to upload...');
+}
