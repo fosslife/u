@@ -8,12 +8,12 @@ const helpmsg = type => {
     if (type === 'message') {
         return (
     `
-        Usage
-        $ up <file> …
+    Usage
+      $ up <file> …
     
-      Examples
-          $ up strangers.mp3
-          $ up sigrid.png
+    Examples
+      $ up strangers.mp3
+      $ up sigrid.png
     `);
     } else {
         return {
@@ -24,6 +24,10 @@ const helpmsg = type => {
                 version: {
                     alias: 'v',
                 },
+                url: {
+                    alias: 'u',
+                    type: 'string'
+                },                
             },
         };
     }
