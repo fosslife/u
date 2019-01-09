@@ -13,13 +13,15 @@ const headers = require('./headers');
  * @param {spinner} spinner Spinner Object
  */
 const request = async (url, method, form, spinner) => {
+    const header = form._boundary && headers(apiKey, form._boundary) || headers(apiKey);
     const response = await got(url, {
         method,
-        headers: headers(apiKey, form._boundary),
+        headers: header,
         body: form,
-    }).on('uploadProgress', progress => {
-        spinner.text = `Uploading ${Math.round(progress.percent * 100)}%...`;
-    });
+    })
+    // .on('uploadProgress', progress => {
+    //     spinner.text = `Uploading ${Math.round(progress.percent * 100)}%...`;
+    // });
 
     return response;
 }
