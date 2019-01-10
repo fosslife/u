@@ -18,8 +18,12 @@ process.on('SIGINT', () => {
 /**
  * Uplaod file if given
  */
-if (file) {
+if (file && cli.flags.url) {
+    die('Specify either URL to shorten or file to upload')
+} else if (file) {
     upload(file);
-} else {
+} else if (cli.flags.url) {
+    console.log('url')
+} else if (!file && !cli.flags.url) {
     die('Specify a file to upload...');
 }

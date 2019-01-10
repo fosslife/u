@@ -9,6 +9,7 @@ const die = msg => {
     if (msg) {
         console.error(msg);
     }
+    /* eslint-disable unicorn/no-process-exit */
     process.exit(1);
 };
 
