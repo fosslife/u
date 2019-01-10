@@ -1,7 +1,7 @@
 'use strict';
 
 const got = require('got');
-const { apiKey } = require('../config');
+const {apiKey} = require('../config');
 const headers = require('./headers');
 
 /**
@@ -22,6 +22,6 @@ const request = async (url, method, form, spinner) => {
     });
 
     return response;
-}
+};
 
 module.exports = request;

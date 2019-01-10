@@ -1,12 +1,15 @@
 'use strict';
 /**
- * print an error message and exit
+ * Print an error message and exit
  * the process
- * @param {String} msg 
+ * @param {String} msg Message to print before exiting
  */
-const die = (msg) => {
-    msg && console.error(msg);
+/* eslint:disable no-process-exit */
+const die = msg => {
+    if (msg) {
+        console.error(msg);
+    }
     process.exit(1);
-}
+};
 
 module.exports = die;

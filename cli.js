@@ -12,14 +12,14 @@ const file = cli.input[0];
  * Handle graceful termination
  */
 process.on('SIGINT', () => {
-  die('\n\nOperation aborted!');
+    die('\n\nOperation aborted!');
 });
 
 /**
  * Uplaod file if given
  */
 if (file) {
-  upload(file);
+    upload(file);
 } else {
-  die('Specify a file to upload...');
+    die('Specify a file to upload...');
 }
