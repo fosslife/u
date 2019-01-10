@@ -1,7 +1,5 @@
 'use strict';
 
-const url = url => {
-    
-}
+const url = url => {};
 
 module.exports = url;

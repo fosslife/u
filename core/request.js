@@ -19,8 +19,10 @@ const request = async (url, method, form, spinner) => {
         headers: headers(apiKey, form._boundary),
         data: form,
         onUploadProgress: progress => {
-            spinner.text = `Uploading ${Math.round(progress.percent * 100)}%...`;
-        } 
+            spinner.text = `Uploading ${Math.round(
+                progress.percent * 100
+            )}%...`;
+        },
     });
     return response;
 };
