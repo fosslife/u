@@ -1,22 +1,19 @@
 'use strict';
-
+const meow = require('meow');
 /**
  * prepare help menu message
  * @param {object} type 
  */
 const helpmsg = type => {
-    if (type === 'message') {
-        return (
-    `
-        Usage
-        $ up <file> …
-    
-      Examples
-          $ up strangers.mp3
-          $ up sigrid.png
-    `);
-    } else {
-        return {
+    return meow(`
+Usage
+$ up <file> …
+
+Examples
+  $ up strangers.mp3
+  $ up sigrid.png
+`,
+        {
             flags: {
                 help: {
                     alias: 'h',
@@ -24,9 +21,8 @@ const helpmsg = type => {
                 version: {
                     alias: 'v',
                 },
-            },
-        };
-    }
+            }
+        });
 }
 
 module.exports = helpmsg;
