@@ -5,7 +5,7 @@ const FormData = require('form-data');
 const ora = require('ora');
 const {domain} = require('../config');
 const err = require('./errors');
-const request = require('./got');
+const request = require('./request');
 const die = require('./die');
 
 /**
@@ -31,9 +31,9 @@ const upload = async file => {
 
     try {
         const response = await request(domain, 'POST', form, spinner);
-        if (response.statusCode === 200) {
+        if (response.status === 200) {
             spinner.stop();
-            console.log(`${response.body}`);
+            console.log(`${response.data}`);
         }
     } catch (error) {
         err(error, spinner);

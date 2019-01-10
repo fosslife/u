@@ -1,6 +1,6 @@
 'use strict';
 
-const got = require('got');
+const axios = require('axios');
 const {apiKey} = require('../config');
 const headers = require('./headers');
 
@@ -13,14 +13,15 @@ const headers = require('./headers');
  * @param {spinner} spinner Spinner Object
  */
 const request = async (url, method, form, spinner) => {
-    const response = await got(url, {
+    const response = await axios({
+        url,
         method,
         headers: headers(apiKey, form._boundary),
-        body: form,
-    }).on('uploadProgress', progress => {
-        spinner.text = `Uploading ${Math.round(progress.percent * 100)}%...`;
+        data: form,
+        onUploadProgress: progress => {
+            spinner.text = `Uploading ${Math.round(progress.percent * 100)}%...`;
+        } 
     });
-
     return response;
 };
 
