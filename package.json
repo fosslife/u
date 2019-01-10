@@ -33,7 +33,6 @@
   },
   "homepage": "https://github.com/pavanjadhaw/up#readme",
   "dependencies": {
-    "copy-paste": "^1.3.0",
     "form-data": "^2.3.3",
     "got": "^9.5.0",
     "meow": "^5.0.0",
