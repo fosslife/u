@@ -3,7 +3,7 @@
 const die = require('./core/die');
 const upload = require('./core/upload');
 const helpmsg = require('./core/help');
-
+const url = require('./core/url')
 const cli = helpmsg();
 
 const file = cli.input[0];
@@ -23,7 +23,7 @@ if (file && cli.flags.url) {
 } else if (file) {
     upload(file);
 } else if (cli.flags.url) {
-    console.log('url')
+    url(cli.flags.url);
 } else if (!file && !cli.flags.url) {
     die('Specify a file to upload...');
 }
