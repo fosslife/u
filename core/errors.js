@@ -26,7 +26,7 @@ const errorCode = error => {
  * @param {spinner} spinner Spinner object by ora
  */
 const errorHandler = (error, spinner) => {
-    spinner.fail(errorCode(error.statusCode));
+    spinner.fail(errorCode(error.response.status));
 };
 
 module.exports = errorHandler;
