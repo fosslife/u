@@ -1,9 +1,10 @@
 'use strict';
 /**
  * Takes an error code and returns
- * appropriate message assicated 
- * with it. 
+ * appropriate message assicated
+ * with it.
  * @param {number} error Response code
+ * @returns {string} message
  */
 const errorCode = error => {
     switch (error) {
@@ -16,16 +17,16 @@ const errorCode = error => {
         default:
             return `Unknown error`;
     }
-}
+};
 
 /**
- * Error handling for `spinner` to 
+ * Error handling for `spinner` to
  * stop spinning
  * @param {error} error Error object
  * @param {spinner} spinner Spinner object by ora
  */
 const errorHandler = (error, spinner) => {
-    spinner.fail(errorCode(error.statusCode))
-}
+    spinner.fail(errorCode(error.response.status));
+};
 
 module.exports = errorHandler;

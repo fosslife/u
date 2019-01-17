@@ -1,21 +1,24 @@
 'use strict';
-
-const request = require('./got');
 const ora = require('ora');
-const { domain } = require('../config');
+const {domain} = require('../config');
+const request = require('./request');
+const err = require('./errors');
 
-const urlshortener = async url => {
-    // const spinner = ora(`Uploading…`).start();
-    
-    const data = {
-        url
-    }
+const url = async (url, custom = false) => {
+    const spinner = ora(`Uploading…`).start();
     try {
-        const response = await request(domain, 'POST', url)
-        console.log("===", response.body);
-    } catch (e) {
-        console.error("<<<", e);
+        const response = await request(
+            domain,
+            'POST',
+            'url',
+            {url, custom},
+            spinner
+        );
+        spinner.stop();
+        console.log(`${response.data}`);
+    } catch (error) {
+        err(error, spinner);
     }
-}
+};
 
-module.exports = urlshortener;
+module.exports = url;
