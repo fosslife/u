@@ -30,7 +30,7 @@ const upload = async file => {
     const spinner = ora(`Uploading…`).start();
 
     try {
-        const response = await request(domain, 'POST', form, spinner);
+        const response = await request(domain, 'POST', 'file', { form }, spinner);
         if (response.status === 200) {
             spinner.stop();
             console.log(`${response.data}`);
