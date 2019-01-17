@@ -26,5 +26,5 @@ if (file && cli.flags.url) {
 } else if (cli.flags.url) {
     url(cli.flags.url);
 } else if (!file && !cli.flags.url) {
-    die('Specify a file to upload...');
+    die('Please see help with -h flag...');
 }
