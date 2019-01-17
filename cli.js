@@ -8,7 +8,6 @@ const url = require('./core/url');
 const cli = helpmsg();
 
 const file = cli.input[0];
-
 /**
  * Handle graceful termination
  */
