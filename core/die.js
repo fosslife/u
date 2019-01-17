@@ -1,8 +1,8 @@
 'use strict';
 /**
  * Print an error message and exit
- * the process. disabled eslint as 
- * the function is just a wrapper 
+ * the process. disabled eslint as
+ * the function is just a wrapper
  * around process.exit(1), lilnter
  * will always throw the error
  * @param {String} msg Message to print before exiting
